@@ -11,6 +11,7 @@ const RepoDirs: React.FC<RepoProps> = async ({ name }) => {
     `http://api.github.com/repos/${username}/${name}`
   )
   const contents = await response.json()
+  /* eslint-disable @typescript-eslint/no-explicit-any*/
   const dirs = contents.filter((content: any) => content.type === 'dir')
   console.log(dirs)
 
@@ -32,3 +33,4 @@ const RepoDirs: React.FC<RepoProps> = async ({ name }) => {
     </div>
   )
 }
+export default RepoDirs

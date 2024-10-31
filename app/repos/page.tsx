@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { resolve } from 'path'
 import React from 'react'
 import { FaCodeBranch, FaEye, FaStar } from 'react-icons/fa'
 
@@ -15,12 +14,15 @@ export default async function reposPage() {
   // {cache: 'no-store'}
 
   // 3.ISR: Incremental Static Generation
-  const response = await fetch(`http://api.github.com/users/${username}/repos`)
-  {
-    next: {
-      revalidate: 60
+  const response = await fetch(
+    `http://api.github.com/users/${username}/repos`,
+    {
+      next: {
+        revalidate: 60,
+      },
     }
-  }
+  )
+
   await new Promise((resolve) => setTimeout(resolve, 1000))
   const repos = await response.json()
   // console.log(repos)

@@ -34,3 +34,4 @@ const Repo: React.FC<RepoProps> = async ({ name }) => {
     </div>
   )
 }
+export default Repo
